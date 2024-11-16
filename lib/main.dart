@@ -1,3 +1,5 @@
+import 'package:coder_zone_app/widgets/course_search.dart';
+import 'package:coder_zone_app/widgets/header.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -45,6 +47,10 @@ class HomePage extends StatelessWidget {
                   backgroundColor: Colors.white,
                   icon: Icon(Icons.favorite),
                   label: "Favorite"),
+              BottomNavigationBarItem(
+                  backgroundColor: Colors.white,
+                  icon: Icon(Icons.person),
+                  label: "Profile")
             ]),
         appBar: AppBar(
           title: const Text("Coder Zone App"),
@@ -58,6 +64,25 @@ class HomePage extends StatelessWidget {
             ))
           ],
         ),
-        body: const Column());
+        body: Column(
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: 396,
+              height: 188,
+              alignment: Alignment.bottomRight,
+              decoration: const BoxDecoration(
+                  color: Color.fromRGBO(27, 56, 74, 1),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(25),
+                      bottomRight: Radius.circular(25))),
+              child: const Column(
+                children: [Header(), CourseSerach()],
+              ),
+            )
+          ],
+        ));
   }
 }
