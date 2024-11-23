@@ -5,27 +5,25 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Find the best \n online course ",
-                  style: TextStyle(
-                      fontSize: 26,
-                      fontStyle: FontStyle.italic,
-                      color: Colors.white),
-                ),
-              ),
-            )
-          ],
-        )
-      ],
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      height: 110,
+      child: const Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Text('adfdfa'),
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+              "Find the best \n online course ",
+              style: TextStyle(
+                  fontSize: 26,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.white),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
