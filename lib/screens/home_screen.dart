@@ -131,13 +131,13 @@ class HomePage extends StatelessWidget {
                   label: "Profile")
             ]),
         appBar: AppBar(
-          title: Image.asset(
-            "assets/images/coderlogo.png",
-            width: 60,
-            height: 60,
-            fit: BoxFit.fill,
-            color: Colors.black,
-          ),
+          // title: Image.asset(
+          //   "assets/images/coderlogo.png",
+          //   width: 60,
+          //   height: 60,
+          //   fit: BoxFit.fill,
+          //   color: Colors.black,
+          // ),
           actions: [
             (IconButton(
               padding: EdgeInsets.all(10),

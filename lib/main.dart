@@ -1,4 +1,5 @@
 import 'package:coder_zone_app/screens/home_screen.dart';
+import 'package:coder_zone_app/screens/signup-spalsh_screens.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,9 +11,9 @@ class CoderZoneApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: CreateAccountPage(),
     );
   }
 }
