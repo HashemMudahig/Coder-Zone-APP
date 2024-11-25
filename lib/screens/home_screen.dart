@@ -1,20 +1,51 @@
 import 'package:coder_zone_app/models/course_model.dart';
+import 'package:coder_zone_app/screens/profile_screen.dart';
 import 'package:coder_zone_app/widgets/course_search.dart';
 import 'package:coder_zone_app/widgets/header.dart';
 import 'package:coder_zone_app/widgets/most_popular_course_card.dart';
 import 'package:coder_zone_app/widgets/ongoing_course_card.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  final String username;
+  final String email;
+
+  const HomePage({super.key, required this.username, required this.email});
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int CurrentIdex = 0;
+
+  // List of pages for the BottomNavigationBar
+  // final List<Widget> _pages = [
+  //   // HomeScreen(),
+  //   // ExploreScreen(),
+  //   // FavoriteScreen(),
+  //   // Profile screen will be handled manually
+  //   Container(),
+  // ];
+
+  void _navigateToProfile(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => ProfilePage(
+                username: widget.username,
+                email: widget.email,
+              )),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    int CurrentIdex = 0;
     final List<Course> ongoingCourses = [
       Course(
           1,
           "web development for beginners",
-          'assets/images/download.png',
+          'assets/images/P.png',
           0.75,
           49,
           4.7,
@@ -24,19 +55,19 @@ class HomePage extends StatelessWidget {
           "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
       Course(
           1,
-          "web development for beginners",
-          'assets/images/download.png',
+          "Learn Python From Zero\n ",
+          'assets/images/Web.jpg',
           0.75,
           49,
           4.7,
-          "web developing",
+          "Python",
           4900,
           12,
           "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
       Course(
           1,
           "web development for beginners",
-          'assets/images/download.png',
+          'assets/images/offer1.png',
           0.75,
           49,
           4.7,
@@ -60,7 +91,7 @@ class HomePage extends StatelessWidget {
       Course(
           1,
           "web development for beginners",
-          'assets/images/download.png',
+          'assets/images/Digtal.jpg',
           0.75,
           49,
           4.7,
@@ -92,6 +123,42 @@ class HomePage extends StatelessWidget {
           "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
     ];
     return Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.white,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: const Color.fromRGBO(27, 56, 74, 1),
+          unselectedItemColor: Colors.white,
+          selectedFontSize: 20,
+          currentIndex: CurrentIdex, // Highlight the selected tab
+          onTap: (index) {
+            if (index == 3) {
+              // Navigate to Profile screen if the "Profile" tab is pressed
+              _navigateToProfile(context);
+            } else {
+              setState(() {
+                CurrentIdex = index;
+              });
+            }
+          },
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.explore),
+              label: "Explore",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite),
+              label: "Favorite",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: "Profile",
+            ),
+          ],
+        ),
         // drawer: Drawer(
         //   child: ListView(
         //     children: [
@@ -102,34 +169,34 @@ class HomePage extends StatelessWidget {
         //     ],
         //   ),
         // ),
-        bottomNavigationBar: BottomNavigationBar(
-            selectedItemColor: Colors.white,
-            type: BottomNavigationBarType.fixed,
-            // Hide labels
+        // bottomNavigationBar: BottomNavigationBar(
+        //     selectedItemColor: Colors.white,
+        //     type: BottomNavigationBarType.fixed,
+        //     // Hide labels
 
-            backgroundColor: Color.fromRGBO(27, 56, 74, 1),
-            unselectedItemColor: Colors.white,
-            selectedFontSize: 20,
-            items: const [
-              BottomNavigationBarItem(
-                  backgroundColor: Colors.white,
-                  icon: Icon(
-                    Icons.home,
-                  ),
-                  label: "Home"),
-              BottomNavigationBarItem(
-                  backgroundColor: Colors.white,
-                  icon: Icon(Icons.explore),
-                  label: "Explore"),
-              BottomNavigationBarItem(
-                  backgroundColor: Colors.white,
-                  icon: Icon(Icons.favorite),
-                  label: "Favorite"),
-              BottomNavigationBarItem(
-                  backgroundColor: Colors.white,
-                  icon: Icon(Icons.person),
-                  label: "Profile")
-            ]),
+        //     backgroundColor: Color.fromRGBO(27, 56, 74, 1),
+        //     unselectedItemColor: Colors.white,
+        //     selectedFontSize: 20,
+        //     items: const [
+        //       BottomNavigationBarItem(
+        //           backgroundColor: Colors.white,
+        //           icon: Icon(
+        //             Icons.home,
+        //           ),
+        //           label: "Home"),
+        //       BottomNavigationBarItem(
+        //           backgroundColor: Colors.white,
+        //           icon: Icon(Icons.explore),
+        //           label: "Explore"),
+        //       BottomNavigationBarItem(
+        //           backgroundColor: Colors.white,
+        //           icon: Icon(Icons.favorite),
+        //           label: "Favorite"),
+        //       BottomNavigationBarItem(
+        //           backgroundColor: Colors.white,
+        //           icon: Icon(Icons.person),
+        //           label: "Profile")
+        //     ]),
         appBar: AppBar(
           // title: Image.asset(
           //   "assets/images/coderlogo.png",

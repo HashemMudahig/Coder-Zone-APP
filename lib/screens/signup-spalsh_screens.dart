@@ -1,4 +1,5 @@
 import 'package:coder_zone_app/screens/home_screen.dart';
+import 'package:coder_zone_app/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class CreateAccountPage extends StatefulWidget {
@@ -13,7 +14,9 @@ class CreateAccountPage extends StatefulWidget {
 //   const CreateAccountPage({super.key});
 
 class _PasswordFieldState extends State<CreateAccountPage> {
-  @override
+  var username = TextEditingController();
+  var eamil = TextEditingController();
+  //  final TextEditingController emailController = TextEditingController();
   bool hidden = false;
   bool confirm = false;
   Widget build(BuildContext context) {
@@ -62,6 +65,7 @@ class _PasswordFieldState extends State<CreateAccountPage> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
+                    controller: username,
                     decoration: InputDecoration(
                         labelText: 'Name',
                         // prefixIcon: Icon(Icons.person),
@@ -84,6 +88,7 @@ class _PasswordFieldState extends State<CreateAccountPage> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
+                    controller: eamil,
                     decoration: InputDecoration(
                         labelText: 'Email',
                         // prefixIcon: Icon(Icons.email),
@@ -194,7 +199,10 @@ class _PasswordFieldState extends State<CreateAccountPage> {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return const HomePage();
+                        return HomePage(
+                          username: username.text,
+                          email: eamil.text,
+                        );
                       }));
                     },
                     style: ElevatedButton.styleFrom(
