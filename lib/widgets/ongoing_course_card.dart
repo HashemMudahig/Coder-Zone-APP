@@ -17,7 +17,10 @@ class OnGoingCourseCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              child: Image.asset(course.imageUrl),
+              child: Image.asset(
+                course.imageUrl,
+                // fit: BoxFit.fitHeight,
+              ),
             ),
             Text(course.title),
             LinearProgressIndicator(
