@@ -29,7 +29,9 @@ class CoursePage extends StatelessWidget {
             Center(
               child: Image.asset(
                 course.imageUrl,
-                height: 120,
+                fit: BoxFit.fill,
+                height: 344,
+                width: 396,
               ),
             ),
             SizedBox(height: 16),

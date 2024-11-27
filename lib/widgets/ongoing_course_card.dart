@@ -17,8 +17,10 @@ class OnGoingCourseCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
+              height: 95,
               child: Image.asset(
                 course.imageUrl,
+                fit: BoxFit.cover,
                 // fit: BoxFit.fitHeight,
               ),
             ),

@@ -8,10 +8,11 @@ class Header extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       height: 110,
-      child: const Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Text('adfdfa'),
+          Image.asset('assets/images/login-logo.png'),
+          // Text('adfdfa'),
           Align(
             alignment: Alignment.center,
             child: Text(

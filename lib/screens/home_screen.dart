@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
       Course(
           1,
           "Learn Python From Zero\n ",
-          'assets/images/Web.jpg',
+          'assets/images/webDev.png',
           0.75,
           49,
           4.7,
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
       Course(
           1,
           "web development for beginners",
-          'assets/images/offer1.png',
+          'assets/images/Web.jpg',
           0.75,
           49,
           4.7,
@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
       Course(
           1,
           "web development for beginners",
-          'assets/images/Digtal.jpg',
+          'assets/images/Digital.png',
           0.75,
           49,
           4.7,
@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
       Course(
           1,
           "web development for beginners",
-          'assets/images/download.png',
+          'assets/images/Digtal.jpg',
           0.75,
           49,
           4.7,
