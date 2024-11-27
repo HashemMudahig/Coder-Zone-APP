@@ -1,4 +1,5 @@
 import 'package:coder_zone_app/screens/home_screen.dart';
+import 'package:coder_zone_app/screens/login_screen.dart';
 import 'package:coder_zone_app/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -199,10 +200,10 @@ class _PasswordFieldState extends State<CreateAccountPage> {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return HomePage(
-                          username: username.text,
-                          email: eamil.text,
-                        );
+                        return LoginPage(
+                            // username: username.text,
+                            // email: eamil.text,
+                            );
                       }));
                     },
                     style: ElevatedButton.styleFrom(
@@ -232,7 +233,7 @@ class _PasswordFieldState extends State<CreateAccountPage> {
                           height: 30,
                         ),
                       ),
-                      const SizedBox(width: 5),
+                      // const SizedBox(width: 20),
                       IconButton(
                         onPressed: () {
                           // Add Apple signup logic
@@ -249,7 +250,7 @@ class _PasswordFieldState extends State<CreateAccountPage> {
                         icon: Image.asset(
                           'assets/images/apple-logo.png',
                           // Replace with Apple logo path
-                          height: 30,
+                          height: 35,
                         ),
                       ),
                     ],
@@ -263,6 +264,10 @@ class _PasswordFieldState extends State<CreateAccountPage> {
                     const Text('Already have an account?'),
                     TextButton(
                       onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return LoginPage();
+                        }));
                         // Navigate to login page
                       },
                       child: const Text('Login'),
