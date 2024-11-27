@@ -1,4 +1,5 @@
 import 'package:coder_zone_app/models/course_model.dart';
+import 'package:coder_zone_app/screens/ongoing-courses_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnGoingCourseCard extends StatelessWidget {
@@ -8,7 +9,15 @@ class OnGoingCourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => DesignPage(
+                    course: course,
+                  )),
+        );
+      },
       child: Container(
         margin: const EdgeInsets.only(right: 8),
         height: 95,
