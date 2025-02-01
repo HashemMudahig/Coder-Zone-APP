@@ -270,7 +270,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             const SizedBox(height: 8),
             const Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non urna nec erat convallis dignissim.',
+              'Hello I am cs student with a pation for design I enjoy doing it ',
               style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 20),

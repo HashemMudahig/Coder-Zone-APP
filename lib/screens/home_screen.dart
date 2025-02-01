@@ -17,15 +17,94 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int CurrentIdex = 0;
+  List<Course> ongoingCourses = [
+    Course(
+        1,
+        "web development for beginners",
+        'assets/images/P.png',
+        0.20,
+        49,
+        4.7,
+        "web developing",
+        4900,
+        12,
+        "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
+    Course(
+        1,
+        "Learn Python From Zero\n ",
+        'assets/images/webDev.png',
+        0.98,
+        49,
+        4.7,
+        "Python",
+        4900,
+        12,
+        "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
+    Course(
+        1,
+        "web development for beginners",
+        'assets/images/Web.jpg',
+        0.54,
+        49,
+        4.7,
+        "web developing",
+        4900,
+        12,
+        "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
+    Course(
+        1,
+        "web development for beginners",
+        'assets/images/download.png',
+        0.32,
+        49,
+        4.7,
+        "web developing",
+        4900,
+        12,
+        "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
+  ];
+  List<Course> mostPopularCourses = [
+    Course(
+        1,
+        "web development for beginners",
+        'assets/images/Digital.png',
+        0.98,
+        49,
+        4.7,
+        "web developing",
+        4900,
+        12,
+        "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
+    Course(
+        1,
+        "web development for beginners",
+        'assets/images/Digtal.jpg',
+        0.32,
+        49,
+        4.7,
+        "web developing",
+        4900,
+        12,
+        "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
+    Course(
+        1,
+        "web development for beginners",
+        'assets/images/download.png',
+        0.34,
+        49,
+        4.7,
+        "web developing",
+        4900,
+        12,
+        "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
+  ];
+  List<Course> filterdCourses = [];
 
-  // List of pages for the BottomNavigationBar
-  // final List<Widget> _pages = [
-  //   // HomeScreen(),
-  //   // ExploreScreen(),
-  //   // FavoriteScreen(),
-  //   // Profile screen will be handled manually
-  //   Container(),
-  // ];
+  @override
+  void initState() {
+    super.initState();
+    filterdCourses = ongoingCourses;
+  }
 
   void _navigateToProfile(BuildContext context) {
     Navigator.push(
@@ -41,87 +120,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     int CurrentIdex = 0;
-    final List<Course> ongoingCourses = [
-      Course(
-          1,
-          "web development for beginners",
-          'assets/images/P.png',
-          0.75,
-          49,
-          4.7,
-          "web developing",
-          4900,
-          12,
-          "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
-      Course(
-          1,
-          "Learn Python From Zero\n ",
-          'assets/images/webDev.png',
-          0.75,
-          49,
-          4.7,
-          "Python",
-          4900,
-          12,
-          "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
-      Course(
-          1,
-          "web development for beginners",
-          'assets/images/Web.jpg',
-          0.75,
-          49,
-          4.7,
-          "web developing",
-          4900,
-          12,
-          "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
-      Course(
-          1,
-          "web development for beginners",
-          'assets/images/download.png',
-          0.75,
-          49,
-          4.7,
-          "web developing",
-          4900,
-          12,
-          "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
-    ];
-    final List<Course> mostPopularCourses = [
-      Course(
-          1,
-          "web development for beginners",
-          'assets/images/Digital.png',
-          0.75,
-          49,
-          4.7,
-          "web developing",
-          4900,
-          12,
-          "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
-      Course(
-          1,
-          "web development for beginners",
-          'assets/images/Digtal.jpg',
-          0.75,
-          49,
-          4.7,
-          "web developing",
-          4900,
-          12,
-          "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
-      Course(
-          1,
-          "web development for beginners",
-          'assets/images/download.png',
-          0.75,
-          49,
-          4.7,
-          "web developing",
-          4900,
-          12,
-          "This course includes an overview of the various tools available for writing and running Python, and gets students coding quickly.Students are Read more"),
-    ];
+    void searchFun(String value) {
+      setState(() {
+        filterdCourses = ongoingCourses
+            .where((element) =>
+                element.title.toLowerCase().contains(value.toLowerCase()))
+            .toList();
+      });
+    }
+
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.white,
@@ -207,11 +214,11 @@ class _HomePageState extends State<HomePage> {
           // ),
           actions: [
             (IconButton(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               iconSize: 45,
-              color: Color.fromRGBO(27, 56, 74, 1),
+              color: const Color.fromRGBO(27, 56, 74, 1),
               onPressed: () {},
-              icon: Icon(Icons.menu),
+              icon: const Icon(Icons.menu),
             ))
           ],
         ),
@@ -234,33 +241,64 @@ class _HomePageState extends State<HomePage> {
                           color: Color.fromRGBO(27, 56, 74, 1),
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                     ),
-                    const Column(
+                    Column(
                       //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Header(),
-                        SizedBox(
+                        const Header(),
+                        const SizedBox(
                           height: 8,
                         ),
-                        CourseSerach()
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: TextField(
+                              onChanged: searchFun,
+                              decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.all(10),
+                                hintText: "Search  something ",
+                                hintStyle: TextStyle(
+                                  color: Colors.grey.shade400,
+                                ),
+                                prefixIcon: const Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child: Icon(
+                                    Icons.search,
+                                    size: 20,
+                                  ),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(55),
+                                ),
+                                filled: true,
+                                fillColor: Colors.white,
+                              )
+
+                              // prefixIcon: Icon(Icons.search),
+                              // filled: true,
+                              // fillColor: Colors.white),
+                              ),
+                        ),
                       ],
                     ),
                   ],
                 ),
-                TitleWidget(
-                  title: "ongoing courses",
+                const TitleWidget(
+                  title: "ongoing courses ",
                 ),
                 SizedBox(
                   height: 200,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: ongoingCourses.length,
+                      itemCount: filterdCourses.length,
                       itemBuilder: (context, index) {
-                        return OnGoingCourseCard(course: ongoingCourses[index]);
+                        return OnGoingCourseCard(
+                          course: filterdCourses[index],
+                          name: widget.username,
+                        );
                       }),
                 ),
-                TitleWidget(title: "Most popular"),
+                const TitleWidget(title: "Most popular"),
                 SizedBox(
-                  height: 500,
+                  height: 180,
                   child: ListView.builder(
                       scrollDirection: Axis.vertical,
                       itemCount: mostPopularCourses.length,
