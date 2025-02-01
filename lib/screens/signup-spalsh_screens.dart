@@ -17,12 +17,16 @@ class CreateAccountPage extends StatefulWidget {
 class _PasswordFieldState extends State<CreateAccountPage> {
   var username = TextEditingController();
   var eamil = TextEditingController();
+  var password = TextEditingController();
+  var confirmpassword = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   //  final TextEditingController emailController = TextEditingController();
   bool hidden = false;
   bool confirm = false;
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: Form(
+        key: formKey,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: SingleChildScrollView(
@@ -65,7 +69,13 @@ class _PasswordFieldState extends State<CreateAccountPage> {
                     color: Color.fromRGBO(233, 238, 242, 1),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: TextField(
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "invalid username";
+                      }
+                      return null;
+                    },
                     controller: username,
                     decoration: InputDecoration(
                         labelText: 'Name',
@@ -88,7 +98,17 @@ class _PasswordFieldState extends State<CreateAccountPage> {
                     color: Color.fromRGBO(233, 238, 242, 1),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: TextField(
+                  child: TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "value cant't be null";
+                      }
+                      if (!value.contains('@') && !value.contains('.')) {
+                        return "invalid email";
+                      }
+                      return null;
+                    },
                     controller: eamil,
                     decoration: InputDecoration(
                         labelText: 'Email',
@@ -112,6 +132,16 @@ class _PasswordFieldState extends State<CreateAccountPage> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextFormField(
+                    controller: password,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "invalid password";
+                      }
+                      if (value != confirmpassword.text) {
+                        return "Doesn't Match";
+                      }
+                      return null;
+                    },
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: hidden,
                     decoration: InputDecoration(
@@ -156,6 +186,16 @@ class _PasswordFieldState extends State<CreateAccountPage> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextFormField(
+                    controller: confirmpassword,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "invalid username";
+                      }
+                      if (value != password.text) {
+                        return "Doesn't Match ";
+                      }
+                      return null;
+                    },
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: confirm,
                     decoration: InputDecoration(
@@ -198,13 +238,15 @@ class _PasswordFieldState extends State<CreateAccountPage> {
                   height: 52,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return LoginPage(
-                            // username: username.text,
-                            // email: eamil.text,
-                            );
-                      }));
+                      if (formKey.currentState!.validate()) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return LoginPage(
+                              // username: username.text,
+                              // email: eamil.text,
+                              );
+                        }));
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromRGBO(252, 156, 13, 1),

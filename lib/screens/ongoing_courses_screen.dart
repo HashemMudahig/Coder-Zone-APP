@@ -1,4 +1,5 @@
 import 'package:coder_zone_app/models/course_model.dart';
+import 'package:coder_zone_app/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 // import 'package:video_player/video_player.dart';
 
@@ -18,7 +19,8 @@ import 'package:flutter/material.dart';
 
 class DesignPage extends StatelessWidget {
   final Course course;
-  const DesignPage({super.key, required this.course});
+  final String name;
+  const DesignPage({super.key, required this.course, required this.name});
 
   @override
 //   _DesignPageState createState() => _DesignPageState();
@@ -49,13 +51,6 @@ class DesignPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: Icon(Icons.arrow_back, color: Colors.black),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: Icon(Icons.menu, color: Colors.black),
-          ),
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -112,7 +107,7 @@ class DesignPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Sara Saeed',
+                      name,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -135,13 +130,25 @@ class DesignPage extends StatelessWidget {
                       'Progress',
                       style: TextStyle(color: Colors.grey[600]),
                     ),
-                    Text(
-                      '46%',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: CircularProgressIndicator(
+                            backgroundColor: Colors.grey[300],
+                            value: course.percentage,
+                            color: const Color.fromRGBO(27, 56, 74, 1),
+                          ),
+                        ),
+                        Text(
+                          '${(course.percentage * 100).ceil()}%',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

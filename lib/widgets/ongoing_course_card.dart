@@ -1,10 +1,12 @@
 import 'package:coder_zone_app/models/course_model.dart';
-import 'package:coder_zone_app/screens/ongoing-courses_screen.dart';
+import 'package:coder_zone_app/screens/ongoing_courses_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnGoingCourseCard extends StatelessWidget {
   final Course course;
-  const OnGoingCourseCard({super.key, required this.course});
+  final String name;
+  const OnGoingCourseCard(
+      {super.key, required this.course, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +17,7 @@ class OnGoingCourseCard extends StatelessWidget {
           MaterialPageRoute(
               builder: (context) => DesignPage(
                     course: course,
+                    name: name,
                   )),
         );
       },
